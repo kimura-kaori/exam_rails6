@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'properties#index'
   resources :properties
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :nearest_stations
 end
