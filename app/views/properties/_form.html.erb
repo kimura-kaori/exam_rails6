@@ -1,10 +1,10 @@
-<%= form_with(model: property, local: true) do |form| %>
-  <% if property.errors.any? %>
+<%= form_with(model: @property, local: true) do |form| %>
+  <% if @property.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+      <h2><%= pluralize(@property.errors.count, "error") %> prohibited this property from being saved:</h2>
 
       <ul>
-        <% property.errors.full_messages.each do |message| %>
+        <% @property.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -33,10 +33,28 @@
 
   <div class="field">
     <%= form.label :remarks %>
-    <%= form.text_area :remarks %>
+    <%= form.text_field :remarks %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.fields_for :nearest_stations do |nearest_station_form|%>
+    <div class="field">
+      <%= nearest_station_form.label :route_name %>
+      <%= nearest_station_form.text_field :route_name %>
+    </div>
+
+    <div class="field">
+      <%= nearest_station_form.label :station_name %>
+      <%= nearest_station_form.text_field :station_name %>
+    </div>
+
+    <div class="field">
+      <%= nearest_station_form.label :time %>
+      <%= nearest_station_form.number_field :time %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+
+  <% end %>
 <% end %>

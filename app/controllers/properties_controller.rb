@@ -10,6 +10,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
+    @property.nearest_stations.build
   end
 
   def edit
@@ -17,23 +18,18 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-
-    respond_to
-      if @property.save
-        redirect_to @property, notice: "Property was successfully created."
-      else
-         render :new, status: :unprocessable_entity
-      end
+    if @property.save
+      redirect_to @property, notice: "Property was successfully created."
+    else
+       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @property.update(property_params)
-        redirect_to @property, notice: "Property was successfully updated."
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @property.update(property_params)
+      redirect_to @property, notice: "Property was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -48,6 +44,8 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-      params.require(:property).permit(:name, :price, :address, :age, :remarks)
+      params.require(:property).permit(:name, :price, :address, :age, :remarks,
+        nearest_stations_attributes:[:route_name, :station_name, :time,])
     end
+
 end
