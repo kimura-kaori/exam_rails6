@@ -26,8 +26,9 @@
 </p>
 
 <p>
-  <strong>路線名:</strong>
+  <% n = 0 %>
   <% @property.nearest_stations.each do |nearest_station| %>
+  <h4>最寄駅<%= n+=1 %></h4>
   <p><%= nearest_station.route_name %>
   <p><%= nearest_station.station_name %>
   <p><%= nearest_station.time %>
