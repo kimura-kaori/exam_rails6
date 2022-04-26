@@ -10,11 +10,14 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    2.times do @property.nearest_stations.build
+    2.times do
+      @property.nearest_stations.build
     end
   end
 
   def edit
+    @property = Property.find(params[:id])
+    @property.nearest_stations.build
   end
 
   def create
