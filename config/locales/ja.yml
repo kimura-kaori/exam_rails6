@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+  helpers:
+    submit:
+      create: 登録する
+      update: 更新する

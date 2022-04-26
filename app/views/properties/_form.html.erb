@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :price,'賃料' %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price %><span>円</span>
   </div>
 
   <div class="field">
@@ -27,13 +27,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :age,'築年数' %>
-    <%= form.number_field :age %>
+  <%= form.label :age,'築年数',class: "forem_control" %>
+  <%= form.number_field :age %><span>年</span>
   </div>
 
   <div class="field">
-    <%= form.label :remarks,'備考' %>
-    <%= form.text_field :remarks %>
+    <%= form.label :remarks,'備考'%>
+    <%= form.text_area :remarks%>
   </div>
 
   <% n = 0 %>
@@ -51,7 +51,7 @@
 
     <div class="field">
       <%= nearest_station_form.label :time,'徒歩分数'  %>
-      <%= nearest_station_form.number_field :time %>
+      <%= nearest_station_form.number_field :time %><span>分</span>
     </div>
 
   <% end %>
