@@ -7,7 +7,7 @@
 
 <p>
   <strong>賃料:</strong>
-  <%= @property.price %>
+  <%= @property.price %><span>円</span>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>築年数:</strong>
-  <%= @property.age %>
+  <%= @property.age %><span>年</span>
 </p>
 
 <p>
@@ -28,10 +28,10 @@
 <p>
   <% n = 0 %>
   <% @property.nearest_stations.each do |nearest_station| %>
-  <h4>最寄駅<%= n+=1 %></h4>
-  <p><%= nearest_station.route_name %>
-  <p><%= nearest_station.station_name %>
-  <p><%= nearest_station.time %>
+  <h4>最寄駅 <%= n+=1 %></h4>
+  <h5>路線名</h5> <%= nearest_station.route_name%>
+  <h5>駅名 </h5><%= nearest_station.station_name %>
+  <h5>徒歩分数 </h5><%= nearest_station.time %>
 </p>
 <% end %>
 
