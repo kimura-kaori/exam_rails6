@@ -36,6 +36,8 @@
     <%= form.text_area :remarks%>
   </div>
 
+  <hr>
+
   <% n = 0 %>
   <%= form.fields_for :nearest_stations do |nearest_station_form|%>
   <h4>最寄駅<%= n+=1 %></h4>
