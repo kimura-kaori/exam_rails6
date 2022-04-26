@@ -1,29 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>物件名:</strong>
   <%= @property.name %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>賃料:</strong>
   <%= @property.price %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>住所:</strong>
   <%= @property.address %>
 </p>
 
 <p>
-  <strong>Age:</strong>
+  <strong>築年数:</strong>
   <%= @property.age %>
 </p>
 
 <p>
-  <strong>Remarks:</strong>
+  <strong>備考:</strong>
   <%= @property.remarks %>
 </p>
 
-<%= link_to 'Edit', edit_property_path(@property) %> |
-<%= link_to 'Back', properties_path %>
+<p>
+  <strong>路線名:</strong>
+  <% @property.nearest_stations.each do |nearest_station| %>
+  <p><%= nearest_station.route_name %>
+  <p><%= nearest_station.station_name %>
+  <p><%= nearest_station.time %>
+</p>
+<% end %>
+
+<%= link_to '編集', edit_property_path(@property) %> |
+<%= link_to '戻る', properties_path %>

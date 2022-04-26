@@ -10,7 +10,8 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    @property.nearest_stations.build
+    2.times do @property.nearest_stations.build
+    end
   end
 
   def edit
@@ -21,7 +22,7 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to @property, notice: "Property was successfully created."
     else
-       render :new, status: :unprocessable_entity
+     render :new, status: :unprocessable_entity
     end
   end
 
@@ -45,7 +46,7 @@ class PropertiesController < ApplicationController
 
     def property_params
       params.require(:property).permit(:name, :price, :address, :age, :remarks,
-        nearest_stations_attributes:[:route_name, :station_name, :time,])
+        nearest_stations_attributes:[:id, :route_name, :station_name, :time,])
     end
 
 end
